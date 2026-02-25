@@ -20,13 +20,19 @@ Resources:
       Type: AWS::IAM::User
       Properties:
         UserName: 'ebrayceUser1'
-        Password: !Ref Password
+        LoginProfile:
+          Password: !Ref Password
+          PasswordResetRequired: true
+        Groups:
+          - !Ref S3UserGroup
 
     MyMainUser2:
           Type: AWS::IAM::User
           Properties:
             UserName: 'ebrayceUser2'
-            Password: !Ref Password
+            LoginProfile:
+              Password: !Ref Password
+              PasswordResetRequired: true
             Groups:
               - !Ref S3UserGroup
 
@@ -34,7 +40,11 @@ Resources:
          Type: AWS::IAM::User
          Properties:
            UserName: 'ebrayceUser3'
-           Password: !Ref Password
+           LoginProfile:
+             Password: !Ref Password
+             PasswordResetRequired: true
+           Groups:
+             - !Ref S3UserGroup
 
     S3UserGroup:
       Type: AWS::IAM::Group
