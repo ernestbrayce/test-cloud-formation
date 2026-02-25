@@ -1,4 +1,3 @@
-template-file: template.yaml
-# Add parameters here if your template needs them
-parameters:
-  StackName: "TestIamWithS3AndEC2"
+template-file-path: template.yaml
+parameters: {}
+tags: {}
