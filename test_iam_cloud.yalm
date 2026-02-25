@@ -14,8 +14,6 @@ Resources:
             Name: 'OneTimePassword'
             Description: 'One time password for IAM users'
             SecretString: !Ref Password
-
-
     MyMainUser1:
       Type: AWS::IAM::User
       Properties:
