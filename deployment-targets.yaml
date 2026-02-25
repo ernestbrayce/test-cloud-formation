@@ -1,4 +1,4 @@
-template-file: template.yaml
+template-file-path: template.yaml
 parameters:
   Password: "YourSuperSecretPassword123!"
   StackName: "TestIamWithS3AndEC2"
