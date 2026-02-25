@@ -4,7 +4,7 @@ Description: 'IAM Cloud'
 
 Parameters:
     Password:
-        Type:secureString
+        Type: secureString
         Description: "One time password for IAM users"
 
 Resources:
@@ -24,7 +24,8 @@ Resources:
           Properties:
             UserName: 'ebrayceUser2'
             Password: !Ref OneTimePassword
-   MyMainUser3:
+
+    MyMainUser3:
          Type: AWS::IAM::User
          Properties:
            UserName: 'ebrayceUser3'
