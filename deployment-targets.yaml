@@ -1,4 +1,4 @@
 template-file: test_iam_cloud.yaml
 # Add parameters here if your template needs them
 parameters:
-  StackName: "FirstLabStack"
+  StackName: "TestIamWithS3AndEC2"
