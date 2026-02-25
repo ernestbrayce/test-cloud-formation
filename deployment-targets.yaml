@@ -1,5 +1,3 @@
 template-file-path: template.yaml
-parameters:
-  StackName: "TestIamWithS3AndEC2"
-tags:
-  Project: "InternalTool"
+parameters: {}
+tags: {}
