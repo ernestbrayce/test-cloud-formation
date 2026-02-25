@@ -25,6 +25,15 @@ Resources:
           PasswordResetRequired: true
         Groups:
           - !Ref EC2UserGroup
+        Policies:
+          - PolicyName: 'PreventEC2Creation'
+            PolicyDocument:
+              Version: '2012-10-17'
+              Statement:
+                - Effect: Deny
+                  Action: "ec2:RunInstances"
+                  Resource: '*'
+
 
     MyMainUser2:
           Type: AWS::IAM::User
@@ -36,14 +45,6 @@ Resources:
             Groups:
               - !Ref EC2UserGroup
 
-            Policies:
-              - PolicyName: 'PreventEC2Creation'
-                PolicyDocument:
-                    Version: '2012-10-17'
-                    Statement:
-                      - Effect: Deny
-                        Action: "ec2:RunInstances"
-                        Resource: '*'
 
     MyMainUser3:
          Type: AWS::IAM::User
