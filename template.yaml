@@ -15,22 +15,26 @@ Resources:
             Name: 'OneTimePassword'
             Description: 'One time password for IAM users'
             SecretString: !Ref Password
+
     MyMainUser1:
       Type: AWS::IAM::User
       Properties:
         UserName: 'ebrayceUser1'
-        Password: !Ref OneTimePassword
+        Password: !Ref Password
+
     MyMainUser2:
           Type: AWS::IAM::User
           Properties:
             UserName: 'ebrayceUser2'
-            Password: !Ref OneTimePassword
+            Password: !Ref Password
+            Groups:
+              - !Ref S3UserGroup
 
     MyMainUser3:
          Type: AWS::IAM::User
          Properties:
            UserName: 'ebrayceUser3'
-           Password: !Ref OneTimePassword
+           Password: !Ref Password
 
     S3UserGroup:
       Type: AWS::IAM::Group
@@ -38,5 +42,4 @@ Resources:
         GroupName: 's3-users'
         ManagedPolicyArns:
           - arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess
-      Users:
-        - !Ref MyMainUser
+
