@@ -64,6 +64,7 @@ Resources:
           - arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess
           - arn:aws:iam::aws:policy/IAMUserChangePassword
           - arn:aws:iam::aws:policy/ReadOnlyAccess
+          - !Ref CommonSelfServicePolicy
 
     EC2UserGroup:
       Type: AWS::IAM::Group
@@ -71,6 +72,20 @@ Resources:
         GroupName: 'ec2-users'
         ManagedPolicyArns:
           - arn:aws:iam::aws:policy/AmazonEC2FullAccess
+          - !Ref CommonSelfServicePolicy
+
+    CommonSelfServicePolicy:
+      Type: AWS::IAM::ManagedPolicy
+      Properties:
+        Description: "Allows users to change their own passwords"
+        PolicyDocument:
+          Version: "2012-10-17"
+          Statement:
+            - Effect: Allow
+              Action:
+                - "iam:ChangePassword"
+                - "iam:GetAccountPasswordPolicy"
+              Resource: "*"
 
 Outputs:
   ConsoleLoginURL:
