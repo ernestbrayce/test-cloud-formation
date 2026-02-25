@@ -1,0 +1,42 @@
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description: 'IAM Cloud'
+
+Parameters:
+    Password:
+        Type:secureString
+        Description: "One time password for IAM users"
+
+Resources:
+    OneTimePassword:
+        Type: AWS::SecretsManager::Secret
+        Properties:
+            Name: 'OneTimePassword'
+            Description: 'One time password for IAM users'
+            SecretString: !Ref Password
+
+
+    MyMainUser1:
+      Type: AWS::IAM::User
+      Properties:
+        UserName: 'ebrayceUser1'
+        Password: !Ref OneTimePassword
+    MyMainUser2:
+          Type: AWS::IAM::User
+          Properties:
+            UserName: 'ebrayceUser2'
+            Password: !Ref OneTimePassword
+   MyMainUser3:
+         Type: AWS::IAM::User
+         Properties:
+           UserName: 'ebrayceUser3'
+           Password: !Ref OneTimePassword
+
+    S3UserGroup:
+      Type: AWS::IAM::Group
+      Properties:
+        GroupName: 's3-users'
+        ManagedPolicyArns:
+          - arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess
+      Users:
+        - !Ref MyMainUser
