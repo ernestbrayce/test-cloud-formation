@@ -4,8 +4,9 @@ Description: 'IAM Cloud'
 
 Parameters:
     Password:
-        Type: secureString
+        Type: String
         Description: "One time password for IAM users"
+        NoEcho: true
 
 Resources:
     OneTimePassword:
