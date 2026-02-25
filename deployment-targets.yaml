@@ -1,4 +1,4 @@
-template-file: template.yaml
+template-file-path: template.yaml
 parameters:
   StackName: "TestIamWithS3AndEC2"
 tags:
